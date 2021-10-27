@@ -1,3 +1,48 @@
-<div class="container-fluid">
-    <p>woekin</p>
+<h2>Por país</h2>
+<hr>
+
+<div class="row">
+    <div class="col">
+        <form (ngSubmit)="buscar()"  autocomplete="off">
+            <input type="text"
+                   name="termino"
+                   class="form-control"
+                   [(ngModel)]="termino"
+                   placeholder="Por país"/>
+        </form>
+    </div>
+</div>
+
+<hr>
+<div class="alert alert-danger">
+    <span>
+        no se encontró nada con el término pepito
+    </span>
+</div>
+
+<div class="row">
+    <div class="col">
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th># num</th>
+                    <th>bandera</th>
+                    <th>nombre</th>
+                    <th>poblacion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>bandera</td>
+                    <td>nombre</td>
+                    <td>12323123</td>
+                    <td>
+                        <a href="/pais/mx">Ver...</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
