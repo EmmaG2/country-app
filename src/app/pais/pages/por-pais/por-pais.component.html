@@ -14,30 +14,34 @@
 </div>
 
 <hr>
-<div class="alert alert-danger">
+<div *ngIf="hayError"
+    class="alert alert-danger">
     <span>
-        no se encontró nada con el término pepito
+        no se encontró nada con el término "{{ termino }}"
     </span>
 </div>
 
-<div class="row">
+<div *ngIf="!hayError"
+    class="row">
     <div class="col">
 
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th># num</th>
+                    <th>index </th>
                     <th>bandera</th>
                     <th>nombre</th>
-                    <th>poblacion</th>
+                    <th>población</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>bandera</td>
-                    <td>nombre</td>
-                    <td>12323123</td>
+                <tr *ngFor="let pais of paises; let i = index" >
+                    <td># {{i + 1}}</td> 
+                    <td>
+                        <img class="small-flag" [src]="pais.flags.svg" >
+                    </td> 
+                    <td>{{pais.name.official}}</td> 
+                    <td>{{pais.population | number}}</td> 
                     <td>
                         <a href="/pais/mx">Ver...</a>
                     </td>
