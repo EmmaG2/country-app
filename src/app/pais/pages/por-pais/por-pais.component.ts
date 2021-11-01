@@ -26,12 +26,10 @@ export class PorPaisComponent {
     .subscribe( (pais) => {
       this.paises = pais;
     }, 
-    
     (err) => {
       console.log( "error" );
       this.hayError = true;
       this.paises = [];
     });
   };
-
 };
