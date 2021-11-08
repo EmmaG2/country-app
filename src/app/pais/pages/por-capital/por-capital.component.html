@@ -1,1 +1,23 @@
-<p>Hola mundo</p>
+<h2>Por capital</h2>
+<hr>
+
+<div class="row">
+    <div class="col">
+        <app-pais-input (onEnter)="buscar( $event )"
+        placeholder="buscar capital...">
+        </app-pais-input>
+    </div>
+</div>
+
+<hr>
+<div *ngIf="hayError" class="alert alert-danger">
+    <span>
+        no se encontró nada con el término "{{ termino }}"
+    </span>
+</div>
+
+<div *ngIf="capitales.length > 0" class="row animate__animated animate__backInLeft">
+    <div class="col">
+        <app-table-pais [paises]="capitales"></app-table-pais>
+    </div>
+</div>

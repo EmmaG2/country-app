@@ -4,12 +4,10 @@ import { Pais } from '../../inferfaces/pais.interface';
 
 @Component({
   selector: 'app-table-pais',
-  templateUrl: './table-pais.component.html'
+  templateUrl: './table-pais.component.html',
 })
 export class TablePaisComponent {
-
-  @Input() paises: Pais[] = []
-  constructor() { }
-
-
+  @Input() paises: Pais[] = [];
+  @Input() capitales: Pais[] = [];
+  constructor() {}
 }

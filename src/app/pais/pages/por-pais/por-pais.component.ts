@@ -4,14 +4,12 @@ import { Pais } from '../../inferfaces/pais.interface';
 
 @Component({
   selector: 'app-por-pais',
-  templateUrl: './por-pais.component.html',
-  styles: [
-  ]
+  templateUrl: './por-pais.component.html'
 })
 
 export class PorPaisComponent {
 
-  termino:string = "";
+  termino:string = '';
   hayError: boolean = false;
   paises: Pais[] = [];
 
@@ -27,17 +25,9 @@ export class PorPaisComponent {
       this.paises = pais;
     }, 
     (err) => {
-      console.log( "error" );
       this.hayError = true;
       this.paises = [];
     });
-  };
-
-  sugerencias( termino:string ) {
-
-    this.hayError = false;
-    // todo: crear sugerencias
-
   };
 
 };

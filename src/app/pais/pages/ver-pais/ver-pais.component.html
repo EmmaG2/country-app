@@ -1,1 +1,14 @@
-<p>ver-pais works!</p>
+<div *ngIf="!pais; else divPais" 
+    class="alert alert-info">
+    Espere por favor...
+</div>
+
+
+
+<ng-template #divPais>
+    <div class="row">
+        <div class="col-12">
+            <h1>Pais: {{pais[0].name.common}}</h1>
+        </div>
+    </div>
+</ng-template>
