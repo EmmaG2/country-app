@@ -1,1 +1,26 @@
-<p>por-continente works!</p>
+<h3>Buscar por region <strong>{{ continenteActivo | titlecase}}</strong></h3>
+<hr>
+
+<h5>Seleccione la region </h5>
+<div class="row">
+    <div class="col">
+        <button
+        *ngFor="let continente of continentes"
+        [class]="getClassCss( continente ) "
+        (click)="activarContinente( continente )">
+            {{ continente | titlecase }}
+        </button>
+        <hr>
+        <div *ngIf="hayError" class="alert alert-danger">
+            <span>
+                no se encontró nada con el término "{{ termino }}"
+            </span>
+        </div>
+        
+        <div *ngIf="paises.length > 0" class="row animate__animated animate__backInLeft">
+            <div class="col">
+                <app-table-pais [paises]="paises"></app-table-pais>
+            </div>
+        </div>
+    </div>
+</div>
