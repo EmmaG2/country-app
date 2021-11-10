@@ -44,7 +44,7 @@ export class PorPaisComponent {
         this.mostrarSugerencias = true;
 
         this.paisService.buscarPais(pais).subscribe(
-            (paises) => (this.paisesSugeridos = paises.splice(0, 6)),
+            (paises) => (this.paisesSugeridos = paises.splice(0, 5)),
             (err) => (this.paisesSugeridos = [])
         );
     }
