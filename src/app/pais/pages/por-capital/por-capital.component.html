@@ -8,6 +8,18 @@
         </app-pais-input>
     </div>
 </div>
+<ul *ngIf="mostrarSugerencias" class="list-group" (click)="mostrarSugerencias = false">
+    <li *ngFor="let pais of paisesSugeridos" class=" list-group-item list-group-item-action">
+        <a [routerLink]="['/pais', pais.cca2]" class="nav-link link-dark">
+            {{ pais.name.common }} - {{ pais.name.official }}
+        </a>
+    </li>
+    <li Class=" list-group-item list-group-item-action">
+        <a class="nav-link link-dark" (click)="buscarSugerido( termino )">
+            Buscar "{{ termino }}"
+        </a>
+    </li>
+</ul>
 
 <hr>
 <div *ngIf="hayError" class="alert alert-danger">
