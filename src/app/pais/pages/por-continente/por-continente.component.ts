@@ -20,7 +20,11 @@ export class PorContinenteComponent {
   constructor( private paisService:PaisService ) { }
 
   activarContinente( continente:string ) {
+
+    if ( continente === this.continenteActivo ) { return; }
+
     this.continenteActivo = continente;
+    this.paises = [];
 
     this.hayError = false;
     this.termino = continente;
