@@ -14,7 +14,7 @@ export class PaisService {
     get httpParams() {
         return new HttpParams().set(
             'fields',
-            'flags,name,population,region,capital'
+            'flags,name,population,region,capital,cca2'
         );
     };
     
