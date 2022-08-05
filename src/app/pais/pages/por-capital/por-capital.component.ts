@@ -1,57 +1,50 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
-import { Pais } from '../../inferfaces/pais.interface';
-import { PaisService } from '../../services/pais.service';
+import {Pais} from '../../inferfaces/pais.interface';
+import {PaisService} from '../../services/pais.service';
 
 
 @Component({
-    selector: 'app-por-capital',
-    templateUrl: './por-capital.component.html',
-    styles: [
-        `
-        li {
-            cursor: pointer;
-        }
-        `
-    ]
+  selector: 'app-por-capital',
+  templateUrl: './por-capital.component.html',
+  styleUrls: ['./por-capital.component.scss']
 })
 export class PorCapitalComponent {
-    termino: string = '';
-    hayError: boolean = false;
-    capitales: Pais[] = [];
+  termino: string = '';
+  hayError: boolean = false;
+  capitales: Pais[] = [];
 
-    capitalesSugeridas : Pais[] = [];
-    mostrarSugerencias: boolean = false;
+  capitalesSugeridas: Pais[] = [];
+  mostrarSugerencias: boolean = false;
 
-    constructor(private capitalService: PaisService) {}
+  constructor(private capitalService: PaisService) {}
 
-    buscar(termino: string) {
-        this.hayError = false;
-        this.termino = termino;
+  buscar(termino: string) {
+    this.hayError = false;
+    this.termino = termino;
 
-        this.capitalService.buscarCapital(this.termino).subscribe(
+    this.capitalService.buscarCapital(this.termino)
+        .subscribe(
             (capital) => {
-                this.capitales = capital;
+              this.capitales = capital;
             },
             (err) => {
-                this.hayError = true;
-                this.capitales = [];
-            }
-        );
-    }
+              this.hayError = true;
+              this.capitales = [];
+            });
+  }
 
-    sugerencias(capital: string) {
-        this.hayError = false;
-        this.termino = capital;
-        this.mostrarSugerencias = true;
+  sugerencias(capital: string) {
+    this.hayError = false;
+    this.termino = capital;
+    this.mostrarSugerencias = true;
 
-        this.capitalService.buscarCapital(capital).subscribe(
-            (capitales) => (this.capitalesSugeridas  = capitales.splice(0,5)),
-            (err) => (this.capitalesSugeridas  = [])
-        );
-    }
+    this.capitalService.buscarCapital(capital).subscribe(
+        (capitales) => (this.capitalesSugeridas = capitales.splice(0, 5)),
+        (err) => (this.capitalesSugeridas = []));
+  }
 
-    buscarSugerido(termino: string) {
-        this.buscar(termino);
-    }
+  buscarSugerido(termino: string) {
+    this.buscar(termino);
+  }
 };

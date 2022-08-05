@@ -1,38 +1,49 @@
 <h2>Por capital</h2>
-<hr>
+<hr />
 
 <div class="row">
     <div class="col">
         <app-pais-input
-        (onEnter)="buscar( $event ); mostrarSugerencias = false"
-        (onDebounce)="sugerencias( $event )"
-        placeholder="buscar capital...">
+            (onEnter)="buscar($event); mostrarSugerencias = false"
+            (onDebounce)="sugerencias($event)"
+            placeholder="buscar capital..."
+        >
         </app-pais-input>
     </div>
 </div>
 
-<ul 
+<ul
     *ngIf="mostrarSugerencias"
     class="list-group"
-    (click)="mostrarSugerencias = false">
-    <li *ngFor="let capital of capitalesSugeridas"
-        class="list-group-item list-group-item-action">
+    (click)="mostrarSugerencias = false"
+>
+    <li
+        *ngFor="let capital of capitalesSugeridas"
+        class="list-group-item list-group-item-action"
+    >
         <a [routerLink]="['/pais', capital.cca2]" class="nav-link link-dark">
             {{ capital.capital }} - {{ capital.name.common }}
         </a>
+    </li>
+
     <li Class=" list-group-item list-group-item-action">
-        <a class="nav-link link-dark" (click)="buscarSugerido( termino )">
+        <a class="nav-link link-dark" (click)="buscarSugerido(termino)">
             Buscar "{{ termino }}"
         </a>
+    </li>
 </ul>
 
 <div *ngIf="hayError" class="alert alert-danger">
     <span>
-        no se encontró nada con el término "{{ termino }}", intenta buscar la capital por su nombre en inglés
+        no se encontró nada con el término "{{ termino }}", intenta buscar la
+        capital por su nombre en inglés
     </span>
 </div>
 
-<div *ngIf="capitales.length > 0" class="row animate__animated animate__backInLeft">
+<div
+    *ngIf="capitales.length > 0"
+    class="row animate__animated animate__backInLeft"
+>
     <div class="col">
         <app-table-pais [paises]="capitales"></app-table-pais>
     </div>
